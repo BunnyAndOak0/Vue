@@ -6,6 +6,8 @@ import VueRouter from 'vue-router'
 
 import About from "../views/About";
 import Home from "../views/Home";
+import News from "../views/News";
+import Message from "../views/Message";
 
 Vue.use(VueRouter)
 
@@ -18,7 +20,17 @@ export default new VueRouter({
     },
     {
       path: '/home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '/home/news',    //path最左侧的/永远代表根路径
+          component: News
+        },
+        {
+          path: 'message',    //简化写法
+          component: Message
+        }
+      ]
     },
     {
       path: '/',
